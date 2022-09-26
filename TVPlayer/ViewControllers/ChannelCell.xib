@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ChannelCell" customModule="TVPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="494" height="154"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="494" height="154"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleAspectFit" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="c4w-h4-MZe" userLabel="Main Stack View">
+                        <rect key="frame" x="8" y="8" width="486" height="138"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eq2-3g-qkE" userLabel="Channel Image View">
+                                <rect key="frame" x="0.0" y="0.0" width="138" height="138"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eq2-3g-qkE" secondAttribute="height" multiplier="1:1" id="I8f-Kp-P4Z"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JNG-gp-lVj" userLabel="Channel Title Stack View">
+                                <rect key="frame" x="148" y="45.5" width="278" height="47.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название канала" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHX-Ic-21u">
+                                        <rect key="frame" x="0.0" y="0.0" width="278" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название передачи" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agn-NZ-Mhu">
+                                        <rect key="frame" x="0.0" y="29.5" width="278" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNU-Zj-SXv" userLabel="IsFavoriteButton">
+                                <rect key="frame" x="436" y="44" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="457-A6-7Dt"/>
+                                    <constraint firstAttribute="width" secondItem="nNU-Zj-SXv" secondAttribute="height" multiplier="1:1" id="X3N-BL-I2a"/>
+                                </constraints>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="star.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="18"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="isFavoriteAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="sEh-Du-AWD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="c4w-h4-MZe" secondAttribute="bottom" constant="8" id="Siu-yv-7rn"/>
+                <constraint firstItem="c4w-h4-MZe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="eEu-l7-WmF"/>
+                <constraint firstAttribute="trailing" secondItem="c4w-h4-MZe" secondAttribute="trailing" id="j7j-1W-Lrg"/>
+                <constraint firstItem="c4w-h4-MZe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="s3U-mZ-ASv"/>
+            </constraints>
+            <size key="customSize" width="494" height="154"/>
+            <connections>
+                <outlet property="channelImageView" destination="eq2-3g-qkE" id="Ho6-ze-Bg0"/>
+                <outlet property="channelProgramTitle" destination="agn-NZ-Mhu" id="KmX-GO-0Ww"/>
+                <outlet property="channelTitleLabel" destination="gHX-Ic-21u" id="Iku-tB-pVv"/>
+                <outlet property="isFavoriteButton" destination="nNU-Zj-SXv" id="MfK-4r-svy"/>
+            </connections>
+            <point key="canvasLocation" x="262.31884057971018" y="84.375"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+    </resources>
+</document>

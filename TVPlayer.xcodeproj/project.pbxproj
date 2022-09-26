@@ -1,0 +1,418 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		684486B328D367DA00ECCAAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486B228D367DA00ECCAAF /* AppDelegate.swift */; };
+		684486B528D367DA00ECCAAF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486B428D367DA00ECCAAF /* SceneDelegate.swift */; };
+		684486BA28D367DA00ECCAAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684486B828D367DA00ECCAAF /* Main.storyboard */; };
+		684486BC28D367DC00ECCAAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 684486BB28D367DC00ECCAAF /* Assets.xcassets */; };
+		684486BF28D367DC00ECCAAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684486BD28D367DC00ECCAAF /* LaunchScreen.storyboard */; };
+		684486CB28D368B400ECCAAF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486CA28D368B400ECCAAF /* NetworkManager.swift */; };
+		684486CD28D36AFC00ECCAAF /* TvChannelsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486CC28D36AFC00ECCAAF /* TvChannelsModel.swift */; };
+		684486D228D36C2D00ECCAAF /* ListChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486D128D36C2D00ECCAAF /* ListChannelsViewController.swift */; };
+		684486D428D3844A00ECCAAF /* ChannelsListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486D328D3844A00ECCAAF /* ChannelsListSection.swift */; };
+		684486D728D44C6100ECCAAF /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486D528D44C6100ECCAAF /* ChannelCell.swift */; };
+		684486D828D44C6100ECCAAF /* ChannelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 684486D628D44C6100ECCAAF /* ChannelCell.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		684486AF28D367DA00ECCAAF /* TVPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		684486B228D367DA00ECCAAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		684486B428D367DA00ECCAAF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		684486B928D367DA00ECCAAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		684486BB28D367DC00ECCAAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		684486BE28D367DC00ECCAAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		684486C028D367DC00ECCAAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		684486CA28D368B400ECCAAF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		684486CC28D36AFC00ECCAAF /* TvChannelsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvChannelsModel.swift; sourceTree = "<group>"; };
+		684486D128D36C2D00ECCAAF /* ListChannelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListChannelsViewController.swift; sourceTree = "<group>"; };
+		684486D328D3844A00ECCAAF /* ChannelsListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsListSection.swift; sourceTree = "<group>"; };
+		684486D528D44C6100ECCAAF /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
+		684486D628D44C6100ECCAAF /* ChannelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelCell.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		684486AC28D367DA00ECCAAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		684486A628D367DA00ECCAAF = {
+			isa = PBXGroup;
+			children = (
+				684486B128D367DA00ECCAAF /* TVPlayer */,
+				684486B028D367DA00ECCAAF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		684486B028D367DA00ECCAAF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				684486AF28D367DA00ECCAAF /* TVPlayer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		684486B128D367DA00ECCAAF /* TVPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				684486C628D3683D00ECCAAF /* Storyboards */,
+				684486C728D3685300ECCAAF /* ViewControllers */,
+				684486C928D3687900ECCAAF /* Services */,
+				684486CE28D36B0100ECCAAF /* Models */,
+				684486BB28D367DC00ECCAAF /* Assets.xcassets */,
+				684486B428D367DA00ECCAAF /* SceneDelegate.swift */,
+				684486B228D367DA00ECCAAF /* AppDelegate.swift */,
+				684486C028D367DC00ECCAAF /* Info.plist */,
+			);
+			path = TVPlayer;
+			sourceTree = "<group>";
+		};
+		684486C628D3683D00ECCAAF /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				684486B828D367DA00ECCAAF /* Main.storyboard */,
+				684486BD28D367DC00ECCAAF /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		684486C728D3685300ECCAAF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				684486D128D36C2D00ECCAAF /* ListChannelsViewController.swift */,
+				684486D528D44C6100ECCAAF /* ChannelCell.swift */,
+				684486D628D44C6100ECCAAF /* ChannelCell.xib */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		684486C928D3687900ECCAAF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				684486CA28D368B400ECCAAF /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		684486CE28D36B0100ECCAAF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				684486CC28D36AFC00ECCAAF /* TvChannelsModel.swift */,
+				684486D328D3844A00ECCAAF /* ChannelsListSection.swift */,
+			);
+			name = Models;
+			path = ..;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		684486AE28D367DA00ECCAAF /* TVPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 684486C328D367DC00ECCAAF /* Build configuration list for PBXNativeTarget "TVPlayer" */;
+			buildPhases = (
+				684486AB28D367DA00ECCAAF /* Sources */,
+				684486AC28D367DA00ECCAAF /* Frameworks */,
+				684486AD28D367DA00ECCAAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TVPlayer;
+			productName = TVPlayer;
+			productReference = 684486AF28D367DA00ECCAAF /* TVPlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		684486A728D367DA00ECCAAF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					684486AE28D367DA00ECCAAF = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = 684486AA28D367DA00ECCAAF /* Build configuration list for PBXProject "TVPlayer" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 684486A628D367DA00ECCAAF;
+			productRefGroup = 684486B028D367DA00ECCAAF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				684486AE28D367DA00ECCAAF /* TVPlayer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		684486AD28D367DA00ECCAAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				684486BF28D367DC00ECCAAF /* LaunchScreen.storyboard in Resources */,
+				684486D828D44C6100ECCAAF /* ChannelCell.xib in Resources */,
+				684486BC28D367DC00ECCAAF /* Assets.xcassets in Resources */,
+				684486BA28D367DA00ECCAAF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		684486AB28D367DA00ECCAAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				684486CB28D368B400ECCAAF /* NetworkManager.swift in Sources */,
+				684486B328D367DA00ECCAAF /* AppDelegate.swift in Sources */,
+				684486B528D367DA00ECCAAF /* SceneDelegate.swift in Sources */,
+				684486D428D3844A00ECCAAF /* ChannelsListSection.swift in Sources */,
+				684486D728D44C6100ECCAAF /* ChannelCell.swift in Sources */,
+				684486D228D36C2D00ECCAAF /* ListChannelsViewController.swift in Sources */,
+				684486CD28D36AFC00ECCAAF /* TvChannelsModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		684486B828D367DA00ECCAAF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				684486B928D367DA00ECCAAF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		684486BD28D367DC00ECCAAF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				684486BE28D367DC00ECCAAF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		684486C128D367DC00ECCAAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		684486C228D367DC00ECCAAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		684486C428D367DC00ECCAAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PK5GMP355X;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TVPlayer/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Kelevra.TVPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		684486C528D367DC00ECCAAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PK5GMP355X;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TVPlayer/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Kelevra.TVPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		684486AA28D367DA00ECCAAF /* Build configuration list for PBXProject "TVPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				684486C128D367DC00ECCAAF /* Debug */,
+				684486C228D367DC00ECCAAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		684486C328D367DC00ECCAAF /* Build configuration list for PBXNativeTarget "TVPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				684486C428D367DC00ECCAAF /* Debug */,
+				684486C528D367DC00ECCAAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 684486A728D367DA00ECCAAF /* Project object */;
+}
