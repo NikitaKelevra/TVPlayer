@@ -31,13 +31,13 @@
 		684486BE28D367DC00ECCAAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		684486C028D367DC00ECCAAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		684486CA28D368B400ECCAAF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		684486CC28D36AFC00ECCAAF /* TvChannels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvChannels.swift; sourceTree = "<group>"; };
+		684486CC28D36AFC00ECCAAF /* TvChannels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TvChannels.swift; path = TVPlayer/Models/TvChannels.swift; sourceTree = "<group>"; };
 		684486D128D36C2D00ECCAAF /* ListChannelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListChannelsViewController.swift; sourceTree = "<group>"; };
-		684486D328D3844A00ECCAAF /* ChannelsListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsListSection.swift; sourceTree = "<group>"; };
+		684486D328D3844A00ECCAAF /* ChannelsListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChannelsListSection.swift; path = TVPlayer/Models/ChannelsListSection.swift; sourceTree = "<group>"; };
 		684486D528D44C6100ECCAAF /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		684486D628D44C6100ECCAAF /* ChannelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelCell.xib; sourceTree = "<group>"; };
 		6884EDAC28E19D0E0052D77F /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		6884EDAE28E1A24E0052D77F /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		6884EDAE28E1A24E0052D77F /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Channel.swift; path = TVPlayer/Models/Channel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
