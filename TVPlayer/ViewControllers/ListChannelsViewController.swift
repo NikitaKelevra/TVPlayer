@@ -109,7 +109,8 @@ class ListChannelViewController: UIViewController {
     }
     
     private func getFavoriteChannels() {
-        self.channels = favoriteChannels
+//        self.channels = favoriteChannels
+        self.channels = DataManager.shared.fetchChannels()
         self.reloadData()
     }
 

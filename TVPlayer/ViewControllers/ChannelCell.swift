@@ -34,10 +34,10 @@ final class ChannelCell: UICollectionViewCell {
     }
     
     
-    @IBAction func isFavoriteAction(_ sender: Any) {
+    @IBAction func isFavoriteAction(_ sender: UIButton) {
         isFavorite.toggle()
+        DataManager.shared.changeFavoriteStatus(at: sender.tag)
         isFavoriteButton.tintColor = isFavorite ? .systemBlue : .systemGray3
-        
 //        favoriteChannels.append(cellChannel)
     }
     

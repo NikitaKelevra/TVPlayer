@@ -13,11 +13,13 @@
 		684486BC28D367DC00ECCAAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 684486BB28D367DC00ECCAAF /* Assets.xcassets */; };
 		684486BF28D367DC00ECCAAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684486BD28D367DC00ECCAAF /* LaunchScreen.storyboard */; };
 		684486CB28D368B400ECCAAF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486CA28D368B400ECCAAF /* NetworkManager.swift */; };
-		684486CD28D36AFC00ECCAAF /* TvChannelsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486CC28D36AFC00ECCAAF /* TvChannelsModel.swift */; };
+		684486CD28D36AFC00ECCAAF /* TvChannels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486CC28D36AFC00ECCAAF /* TvChannels.swift */; };
 		684486D228D36C2D00ECCAAF /* ListChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486D128D36C2D00ECCAAF /* ListChannelsViewController.swift */; };
 		684486D428D3844A00ECCAAF /* ChannelsListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486D328D3844A00ECCAAF /* ChannelsListSection.swift */; };
 		684486D728D44C6100ECCAAF /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486D528D44C6100ECCAAF /* ChannelCell.swift */; };
 		684486D828D44C6100ECCAAF /* ChannelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 684486D628D44C6100ECCAAF /* ChannelCell.xib */; };
+		6884EDAD28E19D0E0052D77F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6884EDAC28E19D0E0052D77F /* DataManager.swift */; };
+		6884EDAF28E1A24E0052D77F /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6884EDAE28E1A24E0052D77F /* Channel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,11 +31,13 @@
 		684486BE28D367DC00ECCAAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		684486C028D367DC00ECCAAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		684486CA28D368B400ECCAAF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		684486CC28D36AFC00ECCAAF /* TvChannelsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvChannelsModel.swift; sourceTree = "<group>"; };
+		684486CC28D36AFC00ECCAAF /* TvChannels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvChannels.swift; sourceTree = "<group>"; };
 		684486D128D36C2D00ECCAAF /* ListChannelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListChannelsViewController.swift; sourceTree = "<group>"; };
 		684486D328D3844A00ECCAAF /* ChannelsListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsListSection.swift; sourceTree = "<group>"; };
 		684486D528D44C6100ECCAAF /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		684486D628D44C6100ECCAAF /* ChannelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelCell.xib; sourceTree = "<group>"; };
+		6884EDAC28E19D0E0052D77F /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		6884EDAE28E1A24E0052D77F /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				684486CA28D368B400ECCAAF /* NetworkManager.swift */,
+				6884EDAC28E19D0E0052D77F /* DataManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -108,7 +113,8 @@
 		684486CE28D36B0100ECCAAF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				684486CC28D36AFC00ECCAAF /* TvChannelsModel.swift */,
+				684486CC28D36AFC00ECCAAF /* TvChannels.swift */,
+				6884EDAE28E1A24E0052D77F /* Channel.swift */,
 				684486D328D3844A00ECCAAF /* ChannelsListSection.swift */,
 			);
 			name = Models;
@@ -188,12 +194,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				684486CB28D368B400ECCAAF /* NetworkManager.swift in Sources */,
+				6884EDAD28E19D0E0052D77F /* DataManager.swift in Sources */,
 				684486B328D367DA00ECCAAF /* AppDelegate.swift in Sources */,
 				684486B528D367DA00ECCAAF /* SceneDelegate.swift in Sources */,
 				684486D428D3844A00ECCAAF /* ChannelsListSection.swift in Sources */,
 				684486D728D44C6100ECCAAF /* ChannelCell.swift in Sources */,
 				684486D228D36C2D00ECCAAF /* ListChannelsViewController.swift in Sources */,
-				684486CD28D36AFC00ECCAAF /* TvChannelsModel.swift in Sources */,
+				6884EDAF28E1A24E0052D77F /* Channel.swift in Sources */,
+				684486CD28D36AFC00ECCAAF /* TvChannels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +367,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -387,7 +395,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
