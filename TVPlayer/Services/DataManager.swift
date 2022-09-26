@@ -15,9 +15,9 @@ class DataManager {
     
     private init() {}
     
-    func save(contact: Channel) {
+    func save(channel: Channel) {
         var channels = fetchChannels()
-        channels.append(contact)
+        channels.append(channel)
         
         guard let data = try? JSONEncoder().encode(channels) else { return }
         userDefaults.set(data, forKey: favChannelsKey)
@@ -30,11 +30,13 @@ class DataManager {
         return contacts
     }
     
-    func changeFavoriteStatus(at index: Int) {
+    func changeFavoriteStatus(at channel: Channel) {
         var channels = fetchChannels()
-        var channel = channels.remove(at: index)
-//        channel.favoriteStatus.toggle()
-        channels.insert(channel, at: index)
+        if let index = channels.firstIndex(of: channel) {
+            channels.remove(at: index)
+        } else {
+            channels.append(channel)
+        }
         
         guard let data = try? JSONEncoder().encode(channels) else { return }
         userDefaults.set(data, forKey: favChannelsKey)

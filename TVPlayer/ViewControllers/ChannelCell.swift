@@ -16,8 +16,12 @@ final class ChannelCell: UICollectionViewCell {
     @IBOutlet weak var channelProgramTitle: UILabel!
     @IBOutlet weak var isFavoriteButton: UIButton!
     
-    private var cellChannel: Channel?
-    private var isFavorite = false
+    private var cellChannel: Channel!
+    private var isFavoriteContact = false {
+        didSet {
+            isFavoriteButton.tintColor = isFavoriteContact ? .systemBlue : .systemGray3
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,15 +34,16 @@ final class ChannelCell: UICollectionViewCell {
         channelProgramTitle.text = channel.current.title
         getImageFromUrl(channel.image)
         cellChannel = channel
-        if isFavorite { isFavoriteButton.tintColor = .systemBlue }
+        
+        isFavoriteContact = isFavorite
+//        isFavoriteButton.tintColor = isFavoriteContact ? .systemBlue : .systemGray3
     }
     
     
     @IBAction func isFavoriteAction(_ sender: UIButton) {
-        isFavorite.toggle()
-        DataManager.shared.changeFavoriteStatus(at: sender.tag)
-        isFavoriteButton.tintColor = isFavorite ? .systemBlue : .systemGray3
-//        favoriteChannels.append(cellChannel)
+        isFavoriteContact.toggle()
+        DataManager.shared.changeFavoriteStatus(at: cellChannel)
+//        isFavoriteButton.tintColor = isFavoriteContact ? .systemBlue : .systemGray3
     }
     
     private func setupCell() {
@@ -47,7 +52,7 @@ final class ChannelCell: UICollectionViewCell {
         layer.cornerRadius = 10
         clipsToBounds = true
         
-        isFavoriteButton.tintColor = isFavorite ? .systemBlue : .systemGray3
+//        isFavoriteButton.tintColor = isFavoriteContact ? .systemBlue : .systemGray3
     }
     
     /// Загрузка  и установка картинки
@@ -62,6 +67,5 @@ final class ChannelCell: UICollectionViewCell {
             }
         }
     }
-    
 
 }

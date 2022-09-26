@@ -19,7 +19,9 @@ class ListChannelViewController: UIViewController {
     private var dataSource: DataSource?
     
     private var channels: [Channel] = []
-    private var favoriteChannels : [Channel] = []
+    private var favoriteChannels : [Channel] {
+        DataManager.shared.fetchChannels()
+    }
     
     // MARK: - View Did Load
     override func viewDidLoad() {
@@ -109,8 +111,7 @@ class ListChannelViewController: UIViewController {
     }
     
     private func getFavoriteChannels() {
-//        self.channels = favoriteChannels
-        self.channels = DataManager.shared.fetchChannels()
+        self.channels = favoriteChannels
         self.reloadData()
     }
 
