@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 
 class ListChannelViewController: UIViewController {
 
@@ -60,6 +61,10 @@ class ListChannelViewController: UIViewController {
         /// Настройка  ` CollectionView `
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.delegate = self
+        
+        
+        //                collectionView.dataSource = self
 //        collectionView.backgroundColor = .black
         
         
@@ -67,8 +72,6 @@ class ListChannelViewController: UIViewController {
         collectionView.register(UINib(nibName: String(describing: ChannelCell.self), bundle: nil),
                                 forCellWithReuseIdentifier: ChannelCell.reuseId)
 
-        //        collectionView.delegate = self
-        //        collectionView.dataSource = self
         
         
         /// добавляем collectionView первым (либо любой другой элемент с scrollView, для того, что бы searchBar корректно скрывался при скролле)
@@ -154,5 +157,23 @@ class ListChannelViewController: UIViewController {
             return section
         }
         return layout
+    }
+}
+
+extension ListChannelViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let channel = channels[indexPath.row]
+        
+        let channelUrl = URL(string: channel.url)
+        let player = AVPlayer(url: channelUrl!)
+        
+        let playerVC = AVPlayerViewController()
+        playerVC.player = player
+        
+        present(playerVC, animated: true) {
+            player.play()
+        }
     }
 }
