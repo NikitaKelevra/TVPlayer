@@ -81,8 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				684486D128D36C2D00ECCAAF /* ListChannelsViewController.swift */,
-				684486D528D44C6100ECCAAF /* ChannelCell.swift */,
-				684486D628D44C6100ECCAAF /* ChannelCell.xib */,
+				6884EDB128E462910052D77F /* Channel Cell */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -105,6 +104,15 @@
 			);
 			name = Models;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		6884EDB128E462910052D77F /* Channel Cell */ = {
+			isa = PBXGroup;
+			children = (
+				684486D528D44C6100ECCAAF /* ChannelCell.swift */,
+				684486D628D44C6100ECCAAF /* ChannelCell.xib */,
+			);
+			path = "Channel Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

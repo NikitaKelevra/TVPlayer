@@ -16,7 +16,8 @@ class ListChannelViewController: UIViewController {
     typealias Snapshot = NSDiffableDataSourceSnapshot<ChannelsListSection, Channel>
     
     private var collectionView: UICollectionView!
-    private let segmentedControl = UISegmentedControl()
+    private let searchController = UISearchController(searchResultsController: nil)
+    
     private var dataSource: DataSource?
     
     private var channels: [Channel] = [] {
@@ -25,7 +26,7 @@ class ListChannelViewController: UIViewController {
         }
     }
     
-    private var favoriteChannels : [Channel] {
+    private var favoriteChannels: [Channel] {
         DataManager.shared.fetchChannels()
     }
     
@@ -46,7 +47,17 @@ class ListChannelViewController: UIViewController {
     private func setupElements() {
         view.backgroundColor = UIColor(white: 0.1, alpha: 1)
         
-        /// Настройка  `SegmentedControl`
+        /// Настройка  `Search Controller`
+        searchController.searchResultsUpdater = self  /// результаты  в основном VC
+        searchController.obscuresBackgroundDuringPresentation = false /// доступ к результатам поиска
+        searchController.searchBar.placeholder = "Поиск нужного канала"
+//        searchController.delegate = self
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+
+        navigationItem.searchController = searchController
+        definesPresentationContext = true  /// Позволяет опустить строку поиска при переходе на другой экран
+        
+        /// Настройка  `Segmented Control`
         let segmentedControl = UISegmentedControl(items: ["Все каналы","Избранные"])
         segmentedControl.addTarget(self, action: #selector(segmentAction(_:)), for: .valueChanged)
         segmentedControl.selectedSegmentIndex = 0
@@ -188,5 +199,36 @@ extension ListChannelViewController: UICollectionViewDelegate {
         present(playerVC, animated: true) {      /// Показываем VC и запускаем проигрывание
             player.play()
         }
+    }
+}
+
+extension ListChannelViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    private func filterContentForSearchText(_ searchText: String) {
+        
+        var searchBarIsEmpty: Bool {
+            guard let text = searchController.searchBar.text else { return true }
+            return text.isEmpty
+        }
+        var isFiltering: Bool {
+            return searchController.isActive && !searchBarIsEmpty
+        }
+        
+        if isFiltering {
+            channels = channels.filter({ (channel: Channel) -> Bool in
+            return channel.nameRu.lowercased().contains(searchText.lowercased())
+        })
+        }
+    }
+    
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        searchBar.setShowsCancelButton(false, animated: true)
+        fetchChannels()
+        searchBar.endEditing(true)
     }
 }
