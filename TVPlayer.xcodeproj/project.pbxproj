@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		684486B328D367DA00ECCAAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486B228D367DA00ECCAAF /* AppDelegate.swift */; };
 		684486B528D367DA00ECCAAF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486B428D367DA00ECCAAF /* SceneDelegate.swift */; };
-		684486BA28D367DA00ECCAAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684486B828D367DA00ECCAAF /* Main.storyboard */; };
 		684486BC28D367DC00ECCAAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 684486BB28D367DC00ECCAAF /* Assets.xcassets */; };
-		684486BF28D367DC00ECCAAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684486BD28D367DC00ECCAAF /* LaunchScreen.storyboard */; };
 		684486CB28D368B400ECCAAF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486CA28D368B400ECCAAF /* NetworkManager.swift */; };
 		684486CD28D36AFC00ECCAAF /* TvChannels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486CC28D36AFC00ECCAAF /* TvChannels.swift */; };
 		684486D228D36C2D00ECCAAF /* ListChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684486D128D36C2D00ECCAAF /* ListChannelsViewController.swift */; };
@@ -26,9 +24,7 @@
 		684486AF28D367DA00ECCAAF /* TVPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		684486B228D367DA00ECCAAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		684486B428D367DA00ECCAAF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		684486B928D367DA00ECCAAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		684486BB28D367DC00ECCAAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		684486BE28D367DC00ECCAAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		684486C028D367DC00ECCAAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		684486CA28D368B400ECCAAF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		684486CC28D36AFC00ECCAAF /* TvChannels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TvChannels.swift; path = TVPlayer/Models/TvChannels.swift; sourceTree = "<group>"; };
@@ -70,7 +66,6 @@
 		684486B128D367DA00ECCAAF /* TVPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				684486C628D3683D00ECCAAF /* Storyboards */,
 				684486C728D3685300ECCAAF /* ViewControllers */,
 				684486C928D3687900ECCAAF /* Services */,
 				684486CE28D36B0100ECCAAF /* Models */,
@@ -80,15 +75,6 @@
 				684486C028D367DC00ECCAAF /* Info.plist */,
 			);
 			path = TVPlayer;
-			sourceTree = "<group>";
-		};
-		684486C628D3683D00ECCAAF /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				684486B828D367DA00ECCAAF /* Main.storyboard */,
-				684486BD28D367DC00ECCAAF /* LaunchScreen.storyboard */,
-			);
-			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		684486C728D3685300ECCAAF /* ViewControllers */ = {
@@ -179,10 +165,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				684486BF28D367DC00ECCAAF /* LaunchScreen.storyboard in Resources */,
 				684486D828D44C6100ECCAAF /* ChannelCell.xib in Resources */,
 				684486BC28D367DC00ECCAAF /* Assets.xcassets in Resources */,
-				684486BA28D367DA00ECCAAF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,25 +190,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		684486B828D367DA00ECCAAF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				684486B928D367DA00ECCAAF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		684486BD28D367DC00ECCAAF /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				684486BE28D367DC00ECCAAF /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		684486C128D367DC00ECCAAF /* Debug */ = {
@@ -355,7 +320,6 @@
 				INFOPLIST_FILE = TVPlayer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -383,7 +347,6 @@
 				INFOPLIST_FILE = TVPlayer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

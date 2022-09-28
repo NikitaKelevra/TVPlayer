@@ -19,10 +19,20 @@ class ListChannelViewController: UIViewController {
     private let segmentedControl = UISegmentedControl()
     private var dataSource: DataSource?
     
-    private var channels: [Channel] = []
+    private var channels: [Channel] = [] {
+        didSet{
+            reloadData()
+        }
+    }
+    
     private var favoriteChannels : [Channel] {
         DataManager.shared.fetchChannels()
     }
+    
+    /// Цвета оформления
+    private let darkGrayColor = UIColor(white: 0.2, alpha: 1)
+    private let lightGrayColor = UIColor(white: 0.5, alpha: 1)
+
     
     // MARK: - View Did Load
     override func viewDidLoad() {
@@ -30,45 +40,48 @@ class ListChannelViewController: UIViewController {
         setupElements()
         createDataSource()
         fetchChannels()
-        reloadData()
     }
-    
     
     // MARK: - Настройка элементов экрана
     private func setupElements() {
-        view.backgroundColor = .darkGray
+        view.backgroundColor = UIColor(white: 0.1, alpha: 1)
         
         /// Настройка  `SegmentedControl`
-
-        /// скрываем тень navigationBar
-//        guard let appearance = navigationController?.navigationBar.standardAppearance else { return }
-//        appearance.shadowImage = UIImage()
-//        appearance.shadowColor = .clear
-//        navigationController?.navigationBar.standardAppearance = appearance
-//
-        let segmentedControl = UISegmentedControl(items: ["Все","Избранные"])
+        let segmentedControl = UISegmentedControl(items: ["Все каналы","Избранные"])
         segmentedControl.addTarget(self, action: #selector(segmentAction(_:)), for: .valueChanged)
         segmentedControl.selectedSegmentIndex = 0
-        
-        segmentedControl.tintColor = .gray.withAlphaComponent(0.2)
+        segmentedControl.selectedSegmentTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        segmentedControl.backgroundColor = darkGrayColor
+        segmentedControl.tintColor = lightGrayColor
         segmentedControl.layer.cornerRadius = 5.0
+        
+        /// Настройка характеристик отображения текста
+        let selectedTextAttributes: [NSAttributedString.Key : Any] = [
+            .font: UIFont.systemFont(ofSize: 20, weight: .heavy),
+            .foregroundColor: darkGrayColor,
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+        
+        let normalTextAttributes: [NSAttributedString.Key : Any] = [
+            .font: UIFont.systemFont(ofSize: 17, weight: .medium),
+            .foregroundColor: lightGrayColor
+        ]
+        
+        segmentedControl.setTitleTextAttributes(selectedTextAttributes, for: .selected)
+        segmentedControl.setTitleTextAttributes(normalTextAttributes, for: .normal)
         
         /// Тень к Segmented Control
         segmentedControl.layer.shadowColor = UIColor.systemGray6.cgColor
         segmentedControl.layer.shadowOffset = CGSize(width: 0, height: 0.5)
         segmentedControl.layer.shadowRadius = CGFloat(0.5)
         
-        /// Настройка  ` CollectionView `
+        /// Настройка  `CollectionView`
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.backgroundColor = .clear
         collectionView.delegate = self
         
-        
-        //                collectionView.dataSource = self
-//        collectionView.backgroundColor = .black
-        
-        
-        /// регистрация ячейки  и заголовка
+        /// Регистрация ячейки
         collectionView.register(UINib(nibName: String(describing: ChannelCell.self), bundle: nil),
                                 forCellWithReuseIdentifier: ChannelCell.reuseId)
 
@@ -84,15 +97,15 @@ class ListChannelViewController: UIViewController {
         let safeAreaGuide = self.view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            segmentedControl.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: 0),
-            segmentedControl.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 0),
+            segmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            segmentedControl.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -16),
             segmentedControl.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
             segmentedControl.heightAnchor.constraint(equalToConstant: 40),
             
             collectionView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
             collectionView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
-            collectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor)
+            collectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor,constant: 7 ),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
@@ -109,16 +122,14 @@ class ListChannelViewController: UIViewController {
         NetworkManager.shared.fetchChannelsData(completion: { channels, _ in
             guard let channelsData = channels else { return }
             self.channels = channelsData.channels
-            self.reloadData()
         })
     }
     
     private func getFavoriteChannels() {
         self.channels = favoriteChannels
-        self.reloadData()
     }
 
-    // MARK: - Настройка DataSource и Snapshot
+    // MARK: - Настройка DataSource, Snapshot и Layout
     private func createDataSource() {
         dataSource = DataSource(collectionView: collectionView,
                                 cellProvider: { (collectionView, indexPath, channel) -> UICollectionViewCell? in
@@ -152,7 +163,7 @@ class ListChannelViewController: UIViewController {
             let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
             
             let section = NSCollectionLayoutSection(group: group)
-            section.contentInsets = NSDirectionalEdgeInsets.init(top: 20, leading: 8, bottom: 0, trailing: 8)
+            section.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 8, bottom: 0, trailing: 8)
             
             return section
         }
@@ -160,19 +171,21 @@ class ListChannelViewController: UIViewController {
     }
 }
 
+// MARK: - Настройка проигрывателя каналов AVPlayer
+
 extension ListChannelViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let channel = channels[indexPath.row]
+        let channel = channels[indexPath.row]      /// Понимаем какой канал был выбран
         
-        let channelUrl = URL(string: channel.url)
-        let player = AVPlayer(url: channelUrl!)
+        let channelUrl = URL(string: channel.url) /// Извлекаем Url адресс
+        let player = AVPlayer(url: channelUrl!)   /// Создаем плеер с данным адресом
         
-        let playerVC = AVPlayerViewController()
-        playerVC.player = player
+        let playerVC = AVPlayerViewController()   /// Создаем VC
+        playerVC.player = player                  /// Присваиваем плеер - плееру созданного VC
         
-        present(playerVC, animated: true) {
+        present(playerVC, animated: true) {      /// Показываем VC и запускаем проигрывание
             player.play()
         }
     }

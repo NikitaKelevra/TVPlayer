@@ -25,7 +25,6 @@ final class ChannelCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         setupCell()
     }
 
@@ -36,23 +35,19 @@ final class ChannelCell: UICollectionViewCell {
         cellChannel = channel
         
         isFavoriteContact = isFavorite
-//        isFavoriteButton.tintColor = isFavoriteContact ? .systemBlue : .systemGray3
     }
     
     
     @IBAction func isFavoriteAction(_ sender: UIButton) {
         isFavoriteContact.toggle()
         DataManager.shared.changeFavoriteStatus(at: cellChannel)
-//        isFavoriteButton.tintColor = isFavoriteContact ? .systemBlue : .systemGray3
     }
     
+    /// Настройка вида ячейки
     private func setupCell() {
-        
-        layer.backgroundColor = UIColor(red: 0.192, green: 0.192, blue: 0.208, alpha: 0.5).cgColor
+        backgroundColor = UIColor(white: 0.2, alpha: 1)
         layer.cornerRadius = 10
         clipsToBounds = true
-        
-//        isFavoriteButton.tintColor = isFavoriteContact ? .systemBlue : .systemGray3
     }
     
     /// Загрузка  и установка картинки
@@ -67,5 +62,4 @@ final class ChannelCell: UICollectionViewCell {
             }
         }
     }
-
 }
