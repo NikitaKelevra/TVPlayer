@@ -47,6 +47,22 @@ class ListChannelViewController: UIViewController {
     private func setupElements() {
         view.backgroundColor = UIColor(white: 0.1, alpha: 1)
         
+        /// Настройка  `Navigation Controller`
+        title = "TV Player"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.gray]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.green]
+        navBarAppearance.backgroundColor = .clear
+        
+//        navBarAppearance.shadowImage = UIImage()
+//        navBarAppearance.shadowColor = .clear
+        
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        
         /// Настройка  `Search Controller`
         searchController.searchResultsUpdater = self  /// результаты  в основном VC
         searchController.obscuresBackgroundDuringPresentation = false /// доступ к результатам поиска
@@ -68,7 +84,7 @@ class ListChannelViewController: UIViewController {
         
         /// Настройка характеристик отображения текста
         let selectedTextAttributes: [NSAttributedString.Key : Any] = [
-            .font: UIFont.systemFont(ofSize: 20, weight: .heavy),
+            .font: UIFont.systemFont(ofSize: 17, weight: .heavy),
             .foregroundColor: darkGrayColor,
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
@@ -91,7 +107,7 @@ class ListChannelViewController: UIViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
-        
+//        collectionView.dataSource = self
         /// Регистрация ячейки
         collectionView.register(UINib(nibName: String(describing: ChannelCell.self), bundle: nil),
                                 forCellWithReuseIdentifier: ChannelCell.reuseId)
@@ -110,7 +126,7 @@ class ListChannelViewController: UIViewController {
         NSLayoutConstraint.activate([
             segmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             segmentedControl.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -16),
-            segmentedControl.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
+            segmentedControl.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 8),
             segmentedControl.heightAnchor.constraint(equalToConstant: 40),
             
             collectionView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
@@ -182,12 +198,25 @@ class ListChannelViewController: UIViewController {
     }
 }
 
-// MARK: - Настройка проигрывателя каналов AVPlayer
-
+// MARK: - Методы Collection View
 extension ListChannelViewController: UICollectionViewDelegate {
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        playChannelForIndexPath(indexPath: indexPath) /// Проигрывание канала выделеной ячейки
+    }
+    
+    
+    /// Создаем возможность передвижения каналов
+    func collectionView(_ collectionView: UICollectionView, targetIndexPathForMoveOfItemFromOriginalIndexPath originalIndexPath: IndexPath, atCurrentIndexPath currentIndexPath: IndexPath, toProposedIndexPath proposedIndexPath: IndexPath) -> IndexPath {
+        let tempChannel = channels[originalIndexPath.row]
+        channels[originalIndexPath.row] = channels[currentIndexPath.row]
+        channels[currentIndexPath.row] = tempChannel
+        return proposedIndexPath
+    }
+    
+    // Реализация проигрывателя каналов AVPlayer
+    private func playChannelForIndexPath(indexPath: IndexPath) {
         let channel = channels[indexPath.row]      /// Понимаем какой канал был выбран
         
         let channelUrl = URL(string: channel.url) /// Извлекаем Url адресс
@@ -200,8 +229,10 @@ extension ListChannelViewController: UICollectionViewDelegate {
             player.play()
         }
     }
+    
 }
 
+// MARK: - Настройка поиска UISearchController
 extension ListChannelViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
@@ -219,8 +250,10 @@ extension ListChannelViewController: UISearchResultsUpdating, UISearchBarDelegat
         
         if isFiltering {
             channels = channels.filter({ (channel: Channel) -> Bool in
-            return channel.nameRu.lowercased().contains(searchText.lowercased())
-        })
+                return channel.nameRu.lowercased().contains(searchText.lowercased())
+            })
+        } else {
+            fetchChannels()
         }
     }
     
