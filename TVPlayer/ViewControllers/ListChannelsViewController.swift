@@ -106,18 +106,27 @@ class ListChannelViewController: UIViewController {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .clear
+        
+        collectionView.dragInteractionEnabled = true
         collectionView.delegate = self
+        collectionView.dragDelegate = self
+        collectionView.dropDelegate = self
 //        collectionView.dataSource = self
         /// Регистрация ячейки
         collectionView.register(UINib(nibName: String(describing: ChannelCell.self), bundle: nil),
                                 forCellWithReuseIdentifier: ChannelCell.reuseId)
 
+        /// Набавляем обработку нажатий по ячейкам
+//        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(_:)))
+//        collectionView.addGestureRecognizer(gesture)
         
         
-        /// добавляем collectionView первым (либо любой другой элемент с scrollView, для того, что бы searchBar корректно скрывался при скролле)
+        /// Добавляем Сollection View первым (либо любой другой элемент с scrollView, для того, что бы searchBar корректно скрывался при скролле)
         view.addSubview(collectionView)  /// добавление collectionView на экран
         view.addSubview(segmentedControl) /// добавление Segmented Control на экран
         
+        
+        /// Настраиваем расположение элементов на экране
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -125,8 +134,8 @@ class ListChannelViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             segmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            segmentedControl.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -16),
             segmentedControl.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 8),
+            segmentedControl.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -16),
             segmentedControl.heightAnchor.constraint(equalToConstant: 40),
             
             collectionView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
@@ -143,6 +152,31 @@ class ListChannelViewController: UIViewController {
          default: fetchChannels()
          }
      }
+    
+    /// Действия при долгом нажатии
+//        @objc func handleLongPressGesture(_ gesture: UILongPressGestureRecognizer) {
+//            let gestureLocation = gesture.location(in: collectionView)
+//
+//            switch gesture.state {
+//
+//            case .began:
+//                guard let targetIndexPath = collectionView.indexPathForItem(at: gestureLocation) else { return }
+//                collectionView.beginInteractiveMovementForItem(at: targetIndexPath)
+//            case .changed:
+//                collectionView.updateInteractiveMovementTargetPosition(gestureLocation)
+//            case .ended:
+//                collectionView.endInteractiveMovement()
+//            case .cancelled:
+//                collectionView.cancelInteractiveMovement()
+//            case .failed:
+//                collectionView.cancelInteractiveMovement()
+//            case .possible:
+//                collectionView.cancelInteractiveMovement()
+//            @unknown default:
+//                collectionView.cancelInteractiveMovement()
+//            }
+//        }
+    
     // MARK: - Загрузка данных в массив 'channels'
     /// Загрузка данных в массив 'channels'
     private func fetchChannels() {
@@ -198,7 +232,55 @@ class ListChannelViewController: UIViewController {
     }
 }
 
-// MARK: - Методы Collection View
+// MARK: - Методы Collection View Drag/Drop Delegate
+extension ListChannelViewController: UICollectionViewDragDelegate, UICollectionViewDropDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let channel = channels[indexPath.row]
+        let itemProvider = NSItemProvider(object: channel)
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        dragItem.localObject = channel
+        return [dragItem]
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
+        true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        guard let destinationIndexPath = coordinator.destinationIndexPath else { return }
+        
+        coordinator.items.forEach { dropItem in
+          guard let sourceIndexPath = dropItem.sourceIndexPath else { return }
+
+            let channel = channels[sourceIndexPath.row]
+            removeChannel(at: sourceIndexPath)
+            insertChannel(channel, at: destinationIndexPath)
+//            collectionView.deleteItems(at: [sourceIndexPath])
+//            collectionView.insertItems(at: [destinationIndexPath])
+            
+//          collectionView.performBatchUpdates({
+//          }, completion: { _ in
+//            coordinator.drop( dropItem.dragItem, toItemAt: destinationIndexPath)
+//          })
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession,
+      withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+      return UICollectionViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+    }
+    
+    private func removeChannel(at indexPath: IndexPath) {
+        channels.remove(at: indexPath.row)
+    }
+    
+    private func insertChannel(_ channel: Channel, at indexPath: IndexPath) {
+        channels.insert(channel, at: indexPath.row)
+    }
+}
+
+// MARK: - Методы Collection View Delegate
 extension ListChannelViewController: UICollectionViewDelegate {
     
     
@@ -206,14 +288,13 @@ extension ListChannelViewController: UICollectionViewDelegate {
         playChannelForIndexPath(indexPath: indexPath) /// Проигрывание канала выделеной ячейки
     }
     
-    
     /// Создаем возможность передвижения каналов
-    func collectionView(_ collectionView: UICollectionView, targetIndexPathForMoveOfItemFromOriginalIndexPath originalIndexPath: IndexPath, atCurrentIndexPath currentIndexPath: IndexPath, toProposedIndexPath proposedIndexPath: IndexPath) -> IndexPath {
-        let tempChannel = channels[originalIndexPath.row]
-        channels[originalIndexPath.row] = channels[currentIndexPath.row]
-        channels[currentIndexPath.row] = tempChannel
-        return proposedIndexPath
-    }
+//    func collectionView(_ collectionView: UICollectionView, targetIndexPathForMoveOfItemFromOriginalIndexPath originalIndexPath: IndexPath, atCurrentIndexPath currentIndexPath: IndexPath, toProposedIndexPath proposedIndexPath: IndexPath) -> IndexPath {
+//        let tempChannel = channels[originalIndexPath.row]
+//        channels[originalIndexPath.row] = channels[currentIndexPath.row]
+//        channels[currentIndexPath.row] = tempChannel
+//        return proposedIndexPath
+//    }
     
     // Реализация проигрывателя каналов AVPlayer
     private func playChannelForIndexPath(indexPath: IndexPath) {

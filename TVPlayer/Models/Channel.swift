@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import UniformTypeIdentifiers
 
-// MARK: - Channel Model
+// MARK: - Модель Класса Channel
+final class Channel: NSObject, Codable, NSItemProviderWriting  {
 
-struct Channel: Codable, Hashable {
     let id, epgID: Int
     let nameRu, nameEn: String
     let vitrinaEventsURL: String
@@ -25,7 +26,34 @@ struct Channel: Codable, Hashable {
     let owner: Owner
     let foreignPlayerKey: Bool
     let foreignPlayer: ForeignPlayer?
-
+    
+    init(id: Int, epgID: Int, nameRu: String, nameEn: String, vitrinaEventsURL: String, isFederal: Bool, address: String,
+         cdn: String, url: String, urlSound: String, image: String, hasEpg: Bool, current: Current, regionCode: Int,
+         tz: Int, isForeign: Bool, number: Int, drmStatus: Int, owner: Owner, foreignPlayerKey: Bool, foreignPlayer: ForeignPlayer?)
+    {
+        self.id = id
+        self.epgID = epgID
+        self.nameRu = nameRu
+        self.nameEn = nameEn
+        self.vitrinaEventsURL = vitrinaEventsURL
+        self.isFederal = isFederal
+        self.address = address
+        self.cdn = cdn
+        self.url = url
+        self.urlSound = urlSound
+        self.image = image
+        self.hasEpg = hasEpg
+        self.current = current
+        self.regionCode = regionCode
+        self.tz = tz
+        self.isForeign = isForeign
+        self.number = number
+        self.drmStatus = drmStatus
+        self.owner = owner
+        self.foreignPlayerKey = foreignPlayerKey
+        self.foreignPlayer = foreignPlayer
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id
         case epgID = "epg_id"
@@ -45,16 +73,25 @@ struct Channel: Codable, Hashable {
         case foreignPlayerKey = "foreign_player_key"
         case foreignPlayer = "foreign_player"
     }
+    // MARK: - Соответствие NSItemProviderWriting
+    var image2D:Data?
+    static var writableTypeIdentifiersForItemProvider = [UTType.data.identifier as String]
+    
+    func loadData(withTypeIdentifier typeIdentifier: String, forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress? {
+        let data = image2D
+        completionHandler(data, nil)
+        return nil
+    }
 }
 
-// MARK: - Current
+// MARK: - Модель Структуры Current
 struct Current: Codable, Hashable {
     let timestart, timestop: Int
     let title, desc: String
     let cdnvideo, rating: Int
 }
 
-// MARK: - ForeignPlayer
+// MARK: - Модель Структуры ForeignPlayer
 struct ForeignPlayer: Codable, Hashable {
     let url: String?
     let sdk: String
