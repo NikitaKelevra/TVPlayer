@@ -8,7 +8,7 @@
 import UIKit
 import AVKit
 
-class ListChannelViewController: UIViewController {
+class ChannelsListViewController: UIViewController {
     // MARK: - Propherties
     
     typealias DataSource = UICollectionViewDiffableDataSource<ChannelsListSection, Channel>
@@ -193,7 +193,7 @@ class ListChannelViewController: UIViewController {
 }
 
 // MARK: - Collection View Drag/Drop Delegate
-extension ListChannelViewController: UICollectionViewDragDelegate, UICollectionViewDropDelegate {
+extension ChannelsListViewController: UICollectionViewDragDelegate, UICollectionViewDropDelegate {
     
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         let channel = channels[indexPath.row]
@@ -229,7 +229,7 @@ extension ListChannelViewController: UICollectionViewDragDelegate, UICollectionV
 }
 
 // MARK: - Collection View Delegate
-extension ListChannelViewController: UICollectionViewDelegate {
+extension ChannelsListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         playChannelForIndexPath(indexPath: indexPath) /// Playing the channel of the selected cell
     }
@@ -248,7 +248,7 @@ extension ListChannelViewController: UICollectionViewDelegate {
 }
 
 // MARK: - UISearchController settings
-extension ListChannelViewController: UISearchResultsUpdating, UISearchBarDelegate {
+extension ChannelsListViewController: UISearchResultsUpdating, UISearchBarDelegate {
     /// Updating search results
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
