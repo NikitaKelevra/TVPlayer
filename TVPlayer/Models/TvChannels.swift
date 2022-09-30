@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - TvChanells
+// MARK: - "TvChanells" structure model
 struct TvChannels: Codable {
     let channels: [Channel]
     let valid: Int

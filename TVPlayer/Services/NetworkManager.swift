@@ -7,20 +7,17 @@
 
 import Foundation
 
-
-// Api каналов
-let tvChannelsAPI = "http://limehd.online/playlist/channels.json"
-
 struct NetworkManager {
-
-    static let shared = NetworkManager()
-    private init() {}
-
-    
-    // MARK: -
-    
+    // MARK: - Property
     typealias RailCompletionClosure = ((TvChannels?, Error?) -> Void)
     
+    static let shared = NetworkManager()
+    
+    private let tvChannelsAPI = "http://limehd.online/playlist/channels.json" /// API загрузки каналов
+    
+    private init() {}
+    
+    // MARK: - Function
     // Получаем данные из tvChanellsAPI
     public func fetchChannelsData(completion: RailCompletionClosure?) {
         guard let request = createRequest(for: tvChannelsAPI) else {
@@ -29,9 +26,6 @@ struct NetworkManager {
         }
         executeRequest(request: request, completion: completion)
     }
-    
-    
-    // MARK: -
     
     // Создаем настраиваем URLRequest из строки URL
     private func createRequest(for url: String) -> URLRequest? {

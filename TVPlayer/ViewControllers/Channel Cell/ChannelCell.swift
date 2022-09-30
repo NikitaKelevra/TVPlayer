@@ -8,7 +8,7 @@
 import UIKit
 
 final class ChannelCell: UICollectionViewCell {
-
+    // MARK: - Property
     static var reuseId: String = "ChannelCell"
 
     @IBOutlet weak var channelImageView: UIImageView!
@@ -22,12 +22,12 @@ final class ChannelCell: UICollectionViewCell {
             isFavoriteButton.tintColor = isFavoriteContact ? .systemBlue : .systemGray3
         }
     }
-    
+    // MARK: - Function
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
     }
-
+    /// Cell configuration
     func configure(with channel: Channel, isFavorite: Bool = false) {
         channelTitleLabel.text = channel.nameRu
         channelProgramTitle.text = channel.current.title
@@ -37,20 +37,20 @@ final class ChannelCell: UICollectionViewCell {
         isFavoriteContact = isFavorite
     }
     
-    
+    /// Action by clicking on the star - adding/removing from the array of Favorite Channels
     @IBAction func isFavoriteAction(_ sender: UIButton) {
         isFavoriteContact.toggle()
         DataManager.shared.changeFavoriteStatus(at: cellChannel)
     }
     
-    /// Настройка вида ячейки
+    /// Cell settings
     private func setupCell() {
         backgroundColor = UIColor(white: 0.2, alpha: 1)
         layer.cornerRadius = 10
         clipsToBounds = true
     }
     
-    /// Загрузка  и установка картинки
+    /// Downloading and installing the channel image
     private func getImageFromUrl(_ url: String) {
         guard let url = URL(string: url) else { return }
         

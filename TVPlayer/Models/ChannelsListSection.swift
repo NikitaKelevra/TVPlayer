@@ -5,8 +5,8 @@
 //  Created by Сперанский Никита on 15.09.2022.
 //
 
-/// Секции в UICollectionView в ListChannelViewController
-
+// MARK: - "ChannelsListSection" enum model
+/// Section in UICollectionView в ListChannelViewController
 enum ChannelsListSection: Int {
     case main
 }
