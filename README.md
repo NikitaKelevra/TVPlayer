@@ -1,6 +1,7 @@
  # TV Player  
 
-
+ <p></p>
+ <img src ="https://i.ibb.co/0Yxg9dT/TV-Player-main-view.png" align="right" width="387px" height="682px"      hspace="50px" vspace="20px"/>
 
 
 `TV Player` program provides the opportunity to watch TV channels, as well as adding your favorite ones to a separate list.
